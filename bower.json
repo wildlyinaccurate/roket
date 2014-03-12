@@ -1,0 +1,17 @@
+{
+  "name": "roket",
+  "version": "0.0.0",
+  "authors": [
+    "Joseph Wynn <joseph@wildlyinaccurate.com>"
+  ],
+  "description": "Ride a roket ship to the galaxy",
+  "main": "js/game.js",
+  "keywords": [
+    "roket"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "keydrown": "*"
+  }
+}
