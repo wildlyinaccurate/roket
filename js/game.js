@@ -14,14 +14,12 @@ function tick() {
     // Keydrown needs to sync with the game loop
     kd.tick();
 
-    // Clear the whole canvas because wat
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
     roket.move();
     roket.draw(ctx);
 
     // One day this will be a nice interface for the player
     info.innerHTML = 'Co-ordinates: [' + Math.round(roket.x) + ', ' + Math.round(roket.y) + ']<br>' +
+        'Fuel: ' + roket.fuel.toFixed(2) + ' kg<br>' +
         'Thrust: ' + roket.thrust + ' N<br>' +
         'Acceleration: ' + roket.acceleration().toFixed(2) + ' m/s<br>' +
         'Speed: ' + roket.speed.toFixed(2) + ' m/s';
