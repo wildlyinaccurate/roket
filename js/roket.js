@@ -16,7 +16,7 @@ function Roket() {
     this.mass = 1000;
 
     this.x = (canvas.width / 2) - (this.width / 2);
-    this.y = canvas.height - this.height;
+    this.y = canvas.height - this.height - STAGE_HEIGHT;
     this.maxY = this.y;
 
     this.fuel = 500000;
@@ -65,7 +65,7 @@ Roket.prototype.move = function() {
     } else if (this.y <= this.maxY) {
         // Above ground
         this.speed = Math.min(this.maxSpeed, this.speed + this.acceleration());
-        this.y = this.y - (this.speed / 100);
+        this.y = this.y - (this.speed / 1000);
     } else {
         // On (or below?!) the ground
         this.speed = 0;
@@ -79,8 +79,33 @@ Roket.prototype.draw = function(ctx) {
         // Clear the whole canvas because wat
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+        // Draw the roket
         ctx.fillStyle = '#f00';
         ctx.fillRect(this.x, this.y, this.width, this.height);
+
+        if (this.thrust >= 0) {
+            // Draw a roket fire from thrust
+            var thrustPercentage = this.thrust / MAX_THRUST;
+            var thrustWidth = thrustPercentage * 30;
+            var thrustHeight = Math.pow(thrustPercentage + 1, 6);
+
+            var thrustX = this.x + (this.width - thrustWidth) / 2;
+            var thrustY = this.y + this.height;
+
+            ctx.fillStyle = '#fc0';
+            ctx.strokeStyle = '#f90';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+
+            ctx.moveTo(thrustX, thrustY);
+            ctx.lineTo(thrustX + (thrustWidth / 2), thrustY + thrustHeight);
+            ctx.lineTo(thrustX + thrustWidth, thrustY);
+            ctx.lineTo(thrustX, thrustY);
+
+            ctx.fill();
+            ctx.stroke();
+            ctx.closePath();
+        }
 
         this._cache.x = this.x;
         this._cache.y = this.y;
