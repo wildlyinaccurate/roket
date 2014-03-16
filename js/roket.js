@@ -16,7 +16,7 @@ function Roket() {
     this.mass = 1000;
 
     this.x = (canvas.width / 2) - (this.width / 2);
-    this.y = canvas.height - this.height - STAGE_HEIGHT;
+    this.y = canvas.height - this.height;
     this.maxY = this.y;
 
     this.fuel = 500000;

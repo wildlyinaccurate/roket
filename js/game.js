@@ -1,6 +1,5 @@
 // This is the almost exact number of earth gravity
 const GRAVITY = 9.81;
-const STAGE_HEIGHT = 20;
 
 var info = document.getElementById('roket-info');
 var canvas = document.getElementById('roket-game');
@@ -17,14 +16,6 @@ function tick() {
 
     roket.move();
     roket.draw(ctx);
-
-    // Draw the stage
-    ctx.strokeStyle = '#444';
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    ctx.moveTo(0, canvas.height - STAGE_HEIGHT);
-    ctx.lineTo(canvas.width, canvas.height - STAGE_HEIGHT);
-    ctx.stroke();
 
     // One day this will be a nice interface for the player
     info.innerHTML = 'Co-ordinates: [' + Math.round(roket.x) + ', ' + Math.round(roket.y) + ']<br>' +
