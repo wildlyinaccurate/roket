@@ -67,6 +67,10 @@ Roket.prototype.move = function() {
         this.speed = Math.min(this.maxSpeed, this.speed + this.acceleration());
         this.y = this.y - (this.speed / 500);
     } else {
+        if (this.speed < -25) {
+            console.log('Crashed at ' + this.speed + 'm/s. Roket was destroyed.');
+        }
+
         // On (or below?!) the ground
         this.speed = 0;
         this.y = this.maxY;
