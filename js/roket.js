@@ -65,7 +65,7 @@ Roket.prototype.move = function() {
     } else if (this.y <= this.maxY) {
         // Above ground
         this.speed = Math.min(this.maxSpeed, this.speed + this.acceleration());
-        this.y = this.y - (this.speed / 1000);
+        this.y = this.y - (this.speed / 500);
     } else {
         // On (or below?!) the ground
         this.speed = 0;
