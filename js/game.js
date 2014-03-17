@@ -1,3 +1,5 @@
+const FPS = 60;
+
 // This is the almost exact number of earth gravity
 const GRAVITY = 9.81;
 
@@ -20,13 +22,10 @@ function tick() {
     // One day this will be a nice interface for the player
     info.innerHTML = 'Co-ordinates: [' + Math.round(roket.x) + ', ' + Math.round(roket.y) + ']<br>' +
         'Altitude: ' + -Math.round((roket.y - canvas.height + roket.height)) + 'm<br>' +
-        'Fuel: ' + roket.fuel.toFixed(2) + ' kg<br>' +
+        'Fuel: ' + roket.fuel.toFixed() + ' kg<br>' +
         'Thrust: ' + roket.thrust + ' N<br>' +
         'Acceleration: ' + roket.acceleration().toFixed(2) + ' m/s<br>' +
         'Speed: ' + roket.speed.toFixed(2) + ' m/s';
-
-    requestAnimationFrame(tick);
 }
 
-// This tick is special because it creates an explosion of ticks for ever and ever
-tick();
+requestInterval(tick, 1000 / FPS);
